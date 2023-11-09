@@ -261,7 +261,7 @@ BOTÃO ATIVO
 --------------------------------------------- */
 .nav-collapse a:active,
 .nav-collapse .active a {
-  background: #006400;
+  background: #3023e7;
 }
 
 @media screen and (min-width: 40em) {
