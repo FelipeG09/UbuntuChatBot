@@ -322,7 +322,7 @@ BOTÃO ATIVO
   position: absolute;
   content: "\2261"; /* Hamburger icon */
   text-indent: 0;
-  speak: none;
+  /* speak: none;*/
   width: 100%;
   left: 0;
   top: 0;

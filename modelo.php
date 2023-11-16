@@ -69,13 +69,14 @@
           <th>Valores</th>
         </tr>
         <tr>
-          <td>Botijão Gás</td>
+          <td>Sacola Plástica</td>
           <td>
             <input type="text" name="textfield" id="textfield" />
           </td>
         </tr>
         <tr>
-          <td>Galão de Água</td>
+          <td>Filme PVC Transparente 28cmx300m
+Plásticos</td>
           <td>
             <input type="text" name="textfield2" id="textfield2" />
           </td>
