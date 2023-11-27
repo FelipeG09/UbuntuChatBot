@@ -13,6 +13,8 @@
 
 <div class="login-page">
   <div class="form">
+  <div align="center"><b><h2>Senha ou email incorreto.</h2></b></div>
+  <div align="center"><b>Verifique e tente novamente.</b></div>
     <div align="center"><img src="ropel logo.png"  height="150" width="150"></div>
     <br>
 

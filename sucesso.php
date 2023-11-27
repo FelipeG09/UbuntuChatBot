@@ -13,12 +13,14 @@
 
 <div class="login-page">
   <div class="form">
+  <div align="center"><b><h2>Cadastrado com sucesso!</h2></b></div>
+  <div align="center"><b>Faça o login abaixo</b></div>
     <div align="center"><img src="ropel logo.png"  height="150" width="150"></div>
     <br>
 
-    <form class="login-form" action='autenticar.php' method="post"> 
-      <input type="text" placeholder="Seu email" id='email' name='email'/>
-      <input type="password" placeholder="senha" id='senha' name='senha'/>
+    <form class="login-form" action='index.php'> 
+      <input type="text" placeholder="Seu email"/>
+      <input type="password" placeholder="senha"/>
       <button>ENTRAR</button>
       <p class="message">Não tenho conta <a href="cadastro.php">Clica aqui</a></p>
      </form>

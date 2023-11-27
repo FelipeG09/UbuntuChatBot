@@ -1,4 +1,39 @@
 <?php
+session_start();
+require_once('conn.php');
+error_reporting(0);
+ini_set("display_errors", 0);
+
+if($_SESSION['email'] == True){
+  $email_cliente= $_SESSION['email'];
+  $busca_email = "SELECT * FROM login WHERE email = '$email_cliente'";
+  $resultado_busca = mysqli_query($conn, $busca_email);
+  $total_clientes = mysqli_num_rows($resultado_busca);
+
+  while($dados_usuario = mysqli_fetch_array($resultado_busca)){
+    $email_cliente = $dados_usuario['email'];
+    $senha_cliente = $dados_usuario['senha'];
+    $nome_cliente = $dados_usuario['nome'];
+    $tipo_cliente = $dados_usuario['tipo'];
+
+
+    # Formas de pagamento
+    $dinheiro = $dados_usuario['dinheiro'];
+    $pix = $dados_usuario['pix'];
+    $cartao = $dados_usuario['cartao'];
+    $boleto = $dados_usuario['boleto'];
+
+  }
+}else{
+  // echo "<meta http-equiv='refresh' content='0;url=login.php'>";
+?>
+
+<script type="text/javascript">
+  window.location="login.php";
+  </script>
+
+<?php
+}
 
 $adm = 0;
 
@@ -30,7 +65,13 @@ $adm = 0;
           <li class="menu-item"><a href="produtos.php" data-scroll>PRODUTOS</a></li>
           <li class="menu-item"><a href="pedidos.php" data-scroll>PEDIDOS</a></li>
           <li class="menu-item active"><a href="config.php" data-scroll>CONFIGURAÇÕES</a></li>      
-          <li class="menu-item"><a href="admin.php" data-scroll>ADMIN</a></li>      
+          <?php
+             if($tipo_cliente == 2){
+             ?>
+          <li class="menu-item"><a href="admin.php" data-scroll>ADMIN</a></li>
+          <?php
+             }
+             ?> 
           <li class="menu-item"><a href="sair.php" data-scroll>SAIR</a></li>
     
         </ul>
@@ -83,7 +124,15 @@ $adm = 0;
   </style>
 </head>
 <body>
-<form method="post" action="" onsubmit="return verificaSenhas()">
+  <?php
+
+  $ok = $_GET['senha'];
+  if($ok == True){
+    echo "Senha alterada com sucesso!";
+  }
+
+  ?>
+<form method="post" action="senha_up.php" onsubmit="return verificaSenhas()">
   <h1>Adicionar nova senha</h1>
   <label for="senha">Nova senha:</label>
   <input type="password" id="senha" name="senha" required>
@@ -92,17 +141,17 @@ $adm = 0;
   <input type="submit" value="Adicionar senha">
 </form>
 <br>
-  <form method="post" action="">
+  <form method="post" action="formas_pagamento.php">
   <h2>Formas de pagamento</h2>
   <p>Selecione as opções de pagamento disponíveis:</p>
-  <input type="checkbox" id="dinheiro" name="dinheiro" checked>
+  <input type="checkbox" id="dinheiro" name="dinheiro"<?php if($dinheiro == True){ echo "checked"; }?>>
   <label for="dinheiro">Dinheiro</label><br>
-  <input type="checkbox" id="pix" name="pix" checked>
+  <input type="checkbox" id="pix" name="pix" <?php if($pix == True){ echo "checked"; }?>>
   <label for="pix">PIX</label><br>
-  <input type="checkbox" id="cartao" name="cartao" checked>
+  <input type="checkbox" id="cartao" name="cartao" <?php if($cartao == True){ echo "checked"; }?>>
   <label for="cartao">Cartão</label><br>
-  <input type="checkbox" id="caderneta" name="caderneta" checked>
-  <label for="caderneta">Caderneta</label><br>
+  <input type="checkbox" id="caderneta" name="caderneta" <?php if($boleto == True){ echo "checked"; }?>>
+  <label for="caderneta">Boleto</label><br>
   <br>
   <input type="submit" value="Salvar">
 </form>
