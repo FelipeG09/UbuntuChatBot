@@ -15,15 +15,7 @@ if($_SESSION['email'] == True){
     $senha_cliente = $dados_usuario['senha'];
     $nome_cliente = $dados_usuario['nome'];
     $tipo_cliente = $dados_usuario['tipo'];
-
-
-    # Formas de pagamento
-    $dinheiro = $dados_usuario['dinheiro'];
-    $pix = $dados_usuario['pix'];
-    $cartao = $dados_usuario['cartao'];
-    $boleto = $dados_usuario['boleto'];
-
-  }
+    }
 }else{
   // echo "<meta http-equiv='refresh' content='0;url=login.php'>";
 ?>
@@ -38,19 +30,16 @@ if($_SESSION['email'] == True){
 ?>
 
 <?php
-$dinheiro_post = isset($_POST['dinheiro']);
-$pix_post = isset($_POST['pix']);
-$cartao_post = isset($_POST['cartao']);
-$boleto_post = isset($_POST['boleto']);
+$gas_post = $_POST['gas'];
+$agua_post = $_POST['agua'];
 
 
-$sql = "UPDATE login SET dinheiro = '$dinheiro_post', pix = '$pix_post', cartao = '$cartao_post', boleto = '$boleto_post' WHERE email='$email_cliente'";
+$sql = "UPDATE login SET prod_gas = '$gas_post', prod_agua = '$agua_post' WHERE email='$email_cliente'";
 $query = mysqli_query($conn, $sql);
 
 if(!$query){
     echo "NÃO FOI POSSÍVEL ATUALIZAR.";
 }else{
-    echo "<meta http-equiv='refresh' content='0;url=config.php?valores=ok'>";
+    echo "<meta http-equiv='refresh' content='0;url=produtos.php?'>";
 }
-
 ?>

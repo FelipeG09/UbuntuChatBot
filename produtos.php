@@ -15,6 +15,10 @@ if($_SESSION['email'] == True){
     $senha_cliente = $dados_usuario['senha'];
     $nome_cliente = $dados_usuario['nome'];
     $tipo_cliente = $dados_usuario['tipo'];
+
+    # Gas e Agua
+    $gas_cliente = $dados_usuario['prod_gas'];
+    $agua_cliente = $dados_usuario['prod_agua'];
   }
 }else{
   // echo "<meta http-equiv='refresh' content='0;url=login.php'>";
@@ -112,16 +116,15 @@ $adm = 0;
           <li class="menu-item "><a href="index.php" data-scroll>VENDAS</a></li>
           <li class="menu-item active"><a href="produtos.php" data-scroll>PRODUTOS</a></li>
           <li class="menu-item"><a href="pedidos.php" data-scroll>PEDIDOS</a></li>
-          <li class="menu-item"><a href="config.php" data-scroll>CONFIGURAÇÕES</a></li>      
+          <li class="menu-item"><a href="config.php" data-scroll>CONFIGURAÇÕES</a></li>
           <?php
-             if($tipo_cliente == 2){
-             ?>
+            if($tipo_cliente == 2){
+          ?>
           <li class="menu-item"><a href="admin.php" data-scroll>ADMIN</a></li>
           <?php
-             }
-             ?>    
+            }
+          ?>
           <li class="menu-item"><a href="sair.php" data-scroll>SAIR</a></li>
-    
         </ul>
       </nav>
     </header>
@@ -129,7 +132,7 @@ $adm = 0;
     <section id="home">
     <body>
         <div align='center'>
-    <form id="form1" name="form1" method="post" action="">
+    <form id="form1" name="form1" method="post" action="produtos_up.php">
       <table>
         <tr>
           <th>Produtos</th>
@@ -138,14 +141,14 @@ $adm = 0;
         <tr>
           <td>Botijão Gás</td>
           <td><br>
-          <input type="number" name="gas" id="gas" step="0.01" min="0.00" max="9999.99" lang="pt-BR" style="text-align: right; direction: rtl;" />
+          <input type="number" name="gas" value='<?php echo "$gas_cliente";?>' id="gas" step="0.01" min="0.00" max="9999.99" lang="pt-BR" style="text-align: right; direction: rtl;" />
 
           </td>
         </tr>
         <tr>
           <td>Galão de Água</td>
           <td><br>
-          <input type="number" name="agua" id="agua" step="0.01" min="0.00" max="9999.99" lang="pt-BR" style="text-align: right; direction: rtl;" />
+          <input type="number" name="agua" value='<?php echo "$agua_cliente";?>' id="agua" step="0.01" min="0.00" max="9999.99" lang="pt-BR" style="text-align: right; direction: rtl;" />
 
           </td>
         </tr>

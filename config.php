@@ -64,16 +64,16 @@ $adm = 0;
           <li class="menu-item "><a href="index.php" data-scroll>VENDAS</a></li>
           <li class="menu-item"><a href="produtos.php" data-scroll>PRODUTOS</a></li>
           <li class="menu-item"><a href="pedidos.php" data-scroll>PEDIDOS</a></li>
-          <li class="menu-item active"><a href="config.php" data-scroll>CONFIGURAÇÕES</a></li>      
+          <li class="menu-item active"><a href="config.php" data-scroll>CONFIGURAÇÕES</a></li>
           <?php
-             if($tipo_cliente == 2){
-             ?>
+            if($tipo_cliente == 2){
+          ?>
           <li class="menu-item"><a href="admin.php" data-scroll>ADMIN</a></li>
           <?php
-             }
-             ?> 
+          }
+          ?>
           <li class="menu-item"><a href="sair.php" data-scroll>SAIR</a></li>
-    
+
         </ul>
       </nav>
     </header>
@@ -143,15 +143,18 @@ $adm = 0;
 <br>
   <form method="post" action="formas_pagamento.php">
   <h2>Formas de pagamento</h2>
+  <?php if ($_GET['valor'] == True){echo "<b>Valores Atualizados</b>";}
+  ?>
   <p>Selecione as opções de pagamento disponíveis:</p>
-  <input type="checkbox" id="dinheiro" name="dinheiro"<?php if($dinheiro == True){ echo "checked"; }?>>
+  <input type="checkbox" id="dinheiro" name="dinheiro"<?php if($dinheiro == 1){ echo "checked"; }?>>
   <label for="dinheiro">Dinheiro</label><br>
-  <input type="checkbox" id="pix" name="pix" <?php if($pix == True){ echo "checked"; }?>>
+  <input type="checkbox" id="pix" name="pix"
+  <?php if($pix == 1){ echo "checked"; }?>>
   <label for="pix">PIX</label><br>
-  <input type="checkbox" id="cartao" name="cartao" <?php if($cartao == True){ echo "checked"; }?>>
+  <input type="checkbox" id="cartao" name="cartao" <?php if($cartao == 1){ echo "checked"; }?>>
   <label for="cartao">Cartão</label><br>
-  <input type="checkbox" id="caderneta" name="caderneta" <?php if($boleto == True){ echo "checked"; }?>>
-  <label for="caderneta">Boleto</label><br>
+  <input type="checkbox" id="boleto" name="boleto" <?php if($boleto == 1){ echo "checked"; }?>>
+  <label for="boleto">Boleto</label><br>
   <br>
   <input type="submit" value="Salvar">
 </form>
@@ -171,7 +174,7 @@ $adm = 0;
   }
 </script>
 
-  
+
 
     <script src="js/fastclick.js"></script>
     <script src="js/scroll.js"></script>
